@@ -3,25 +3,32 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --black: #000000;
+  --white: #ffffff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer utilities {
+  .container {
+    @apply mx-auto px-4;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--white);
+  background: var(--black)
+}
+
+
+h1 { font-size: clamp(36px, 6vw, 84px); line-height: 1.1; }
+h2 { font-size: clamp(36px, 4vw, 36px); line-height: 1.4; }
+h3 { font-size: clamp(24px, 4vw, 24px); line-height: 1.4; }
+p { font-size: clamp(20px, 4vw, 20px); line-height: 1.4; }
+p.sm { font-size: clamp(18px, 4vw, 18px); line-height: 1.4; }
+li { font-size: clamp(20px, 4vw, 20px); line-height: 1.4; }
+
+
+.bg-gradient {
+  border-radius: 30px;
+  opacity: 0.8999999761581421;
+  background: linear-gradient(180deg, #700B97 0%, rgba(112, 11, 151, 0.00) 100%);
 }
