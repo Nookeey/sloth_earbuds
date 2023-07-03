@@ -1,26 +1,128 @@
+"use client";
+
 import Button from "@/components/Button";
 import ButtonFunctions from "@/components/ButtonFunctions";
 import Compatibility from "@/components/Compatibility";
 import Footer from "@/components/Footer";
 import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+
+const leftElementVariants = {
+  hidden: {
+    opacity: 0,
+    x: -100,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.5,
+      duration: 1,
+    },
+  },
+};
+
+const rightElementVariants = {
+  hidden: {
+    opacity: 0,
+    x: 100,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.5,
+      duration: 1,
+    },
+  },
+};
+
+const containerVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.5,
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const slideUpVariants = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
+
+const fadeInVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+};
 
 export default function Home() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <main className="">
-      <section className="px-[15px] min-h-screen flex items-center">
-        <div className="container">
-          <div className="flex flex-row items-center gap-[30px] mx-auto">
-            <div className="w-6/12">
-              <h1 className="font-bold uppercase mb-16">
+      <section
+        ref={ref}
+        className="header px-[15px] min-h-screen flex items-center section-top bg-no-repeat bg-center"
+      >
+        <motion.div
+          className="container"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="flex flex-row flex-wrap items-center gap-[30px] mx-auto md:flex-nowrap">
+            <div className="w-full md:w-6/12">
+              <motion.h1
+                className="font-bold uppercase mb-8 md:mb-16"
+                variants={slideUpVariants}
+              >
                 Wireless <br /> Earbuds
-              </h1>
-              <h3 className="font-semibold uppercase mb-16">
-                Odkryj wolność bezprzewodowego dźwięku i doświadcz niezwykłych
-                brzmień!
-              </h3>
-              <Button>Kup teraz</Button>
+              </motion.h1>
+              <motion.h3
+                className="font-semibold uppercase mb-8 md:mb-16"
+                variants={slideUpVariants}
+              >
+                Odkryj wolność bezprzewodowego dźwięku i&nbsp;doświadcz
+                niezwykłych brzmień!
+              </motion.h3>
+              <Image
+                src="/images/header-product.png"
+                alt=""
+                width={667}
+                height={637}
+                className="block mx-auto object-contain md:hidden w-[70%] mb-8"
+              />
+              <motion.div
+                className="text-center md:text-left"
+                variants={slideUpVariants}
+              >
+                <Button>Kup teraz</Button>
+              </motion.div>
             </div>
-            <div className="w-6/12">
+            <motion.div
+              className="hidden md:block md:w-6/12"
+              variants={slideUpVariants}
+            >
               <Image
                 src="/images/header-product.png"
                 alt=""
@@ -28,26 +130,38 @@ export default function Home() {
                 height={637}
                 className="block mx-auto object-contain"
               />
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </section>
 
-      <section className="bg-section-pattern bg-no-repeat bg-center">
-        <section className="px-[15]">
+      <section className="bg-section-pattern bg-no-repeat bg-center bg-contain md:bg-auto mt-12 md:mt-0">
+        <motion.section
+          ref={ref}
+          className="px-[15px]"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="container">
-            <div className="flex items-center gap-[30px] mx-auto">
-              <div className="w-6/12">
+            <div className="flex items-center gap-[30px] mx-auto flex-wrap-reverse md:flex-nowrap">
+              <motion.div
+                className="w-full md:w-6/12"
+                variants={slideUpVariants}
+              >
                 <Image
                   src="/images/product-mirror.png"
                   alt=""
                   width={710}
                   height={645}
-                  className="block mx-auto object-contain"
+                  className="block mx-auto object-contain max-w-[70%] md:max-w-[100%] mt-4 mb-12"
                 />
-              </div>
-              <div className="w-6/12">
-                <h2 className="font-bold uppercase mb-10">
+              </motion.div>
+              <motion.div
+                className="w-full md:w-6/12"
+                variants={slideUpVariants}
+              >
+                <h2 className="font-bold uppercase mb-8">
                   Słuchawki bezprzewodowe z powerbankiem - najnowszy model
                 </h2>
                 <p className="text-justify">
@@ -60,19 +174,19 @@ export default function Home() {
                   etui chronią słuchawki przed wypadnięciem. Zamów teraz i
                   doświadcz swobody bez kabli!
                 </p>
-              </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="px-[15] mt-24">
+        <section ref={ref} className="px-[15px] md:mt-24">
           <div className="container">
             <div className="flex items-center gap-[30px] mx-auto">
-              <div className="w-7/12">
-                <h2 className="font-bold uppercase mb-10">
+              <div className="w-full md:w-7/12">
+                <h2 className="font-bold uppercase mb-8">
                   Nieustająca muzyka na wyciągnięcie ręki!
                 </h2>
-                <p className="text-justify mb-8">
+                <p className="text-justify mb-12">
                   Odkryj rewolucyjne słuchawki bezprzewodowe z wbudowanym
                   powerbankiem, które zapewnią Ci nieograniczoną muzykę bez
                   martwienia się o ładowanie. Dzięki wydajnemu powerbankowi w
@@ -81,9 +195,11 @@ export default function Home() {
                   utworów. Niezależnie od miejsca i czasu, nasze słuchawki z
                   powerbankiem zapewnią Ci nieustającą przyjemność dźwięku.
                 </p>
-                <Button>Zamawiam</Button>
+                <div className="text-center md:text-left">
+                  <Button>Zamawiam</Button>
+                </div>
               </div>
-              <div className="w-5/12">
+              <div className="w-5/12 hidden md:block">
                 <Image
                   src="/images/battery-charging-full.svg"
                   alt=""
@@ -96,10 +212,10 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-[15] mt-24">
+        <section ref={ref} className="px-[15px] mt-24">
           <div className="container">
-            <div className="flex items-center gap-[30px] mx-auto">
-              <div className="w-4/12">
+            <div className="flex items-center gap-[30px] mx-auto flex-wrap md:flex-nowrap">
+              <div className="w-full md:w-4/12 hidden md:block">
                 <Image
                   src="/images/earbuds-button.png"
                   alt=""
@@ -108,8 +224,8 @@ export default function Home() {
                   className="block mx-auto object-contain"
                 />
               </div>
-              <div className="w-8/12">
-                <h2 className="font-bold uppercase mb-10">
+              <div className="w-full md:w-8/12">
+                <h2 className="font-bold uppercase mb-8">
                   Wygodny przycisk wielofunkcyjny
                 </h2>
                 <p className="text-justify">
@@ -118,7 +234,7 @@ export default function Home() {
                   zapewni Ci pełną kontrolę bez względu na to, czy słuchasz
                   muzyki, czy oglądasz filmy.
                 </p>
-                <div className="flex gap-[30px] mt-20">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[30px] mt-12">
                   <ButtonFunctions
                     icon="icon_prev"
                     title="Poprzedni utwór"
@@ -146,14 +262,14 @@ export default function Home() {
         </section>
       </section>
 
-      <section className="px-[15] mt-24">
+      <section ref={ref} className="px-[15px] mt-24">
         <div className="container">
-          <div className="flex items-center gap-[30px] mx-auto">
-            <div className="w-6/12">
-              <h2 className="font-bold uppercase mb-10">
+          <div className="flex items-center gap-[30px] mx-auto flex-wrap md:flex-nowrap">
+            <div className="w-full md:w-6/12">
+              <h2 className="font-bold uppercase mb-8">
                 Niezawodna ochrona przed wodą
               </h2>
-              <p className="text-justify mb-8">
+              <p className="text-justify mb-10 md:mb-12">
                 Nasze słuchawki zapewniają niezawodną ochronę przed wodą,
                 spełniając wymogi klasyfikacji IPX4. Teraz możesz swobodnie
                 pływać, brać prysznic, biegać nawet w deszczu i nie martwić się
@@ -161,9 +277,18 @@ export default function Home() {
                 zanurzenie pod wodą, gwarantując Ci spokój i nieprzerwaną
                 przyjemność użytkowania.
               </p>
-              <Button>Kup teraz</Button>
+              <Image
+                src="/images/waterproof.png"
+                alt=""
+                width={583}
+                height={667}
+                className="block mx-auto object-contain max-w-[70%] md:max-w-[100%] md:hidden mb-10"
+              />
+              <div className="text-center md:text-left">
+                <Button>Kup teraz</Button>
+              </div>
             </div>
-            <div className="w-6/12">
+            <div className="w-full md:w-6/12 hidden md:block">
               <Image
                 src="/images/waterproof.png"
                 alt=""
@@ -176,15 +301,18 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="px-[15] mt-24 bg-section-pattern bg-no-repeat bg-center bg-contain">
+      <section
+        ref={ref}
+        className="px-[15px] mt-24 bg-section-pattern bg-no-repeat bg-center"
+      >
         <div className="container">
           <div className="text-center">
-            <h2 className="font-bold uppercase mb-10">
+            <h2 className="font-bold uppercase mb-10 md:mb-20">
               Zestaw słuchawek bezprzewodowych
             </h2>
           </div>
-          <div className="flex gap-[30px] mx-auto min-h-[400px]">
-            <div className="w-5/12">
+          <div className="flex gap-[15px] sm:gap-[30px] mx-auto min-h-[400px] flex-wrap-reverse sm:flex-nowrap mb-10 sm:mb-0">
+            <div className="w-full sm:w-5/12">
               <Image
                 src="/images/set-earbuds.png"
                 alt=""
@@ -193,7 +321,7 @@ export default function Home() {
                 className="block mx-auto object-contain"
               />
             </div>
-            <div className="w-2/12 relative">
+            <div className="w-2/12 relative hidden sm:block">
               <Image
                 src="/images/point.svg"
                 alt=""
@@ -203,7 +331,7 @@ export default function Home() {
               />
               <div className="w-[6px] h-full bg-[#700B97] absolute top-[25px] left-[50%] translate-x-[-50%] z-0"></div>
             </div>
-            <div className="w-5/12">
+            <div className="w-full sm:w-5/12">
               <h3 className="font-bold uppercase mb-8">Słuchawki</h3>
               <p className="text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
@@ -213,8 +341,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex gap-[30px] mx-auto min-h-[400px]">
-            <div className="w-5/12">
+          <div className="flex gap-[15px] sm:gap-[30px] mx-auto min-h-[400px] flex-wrap-reverse sm:flex-nowrap mb-10 sm:mb-0">
+            <div className="w-full sm:w-5/12">
               <Image
                 src="/images/set-case.png"
                 alt=""
@@ -223,7 +351,7 @@ export default function Home() {
                 className="block mx-auto object-contain"
               />
             </div>
-            <div className="w-2/12 relative">
+            <div className="w-2/12 relative hidden sm:block">
               <Image
                 src="/images/point.svg"
                 alt=""
@@ -233,7 +361,7 @@ export default function Home() {
               />
               <div className="w-[6px] h-full bg-[#700B97] absolute top-[25px] left-[50%] translate-x-[-50%] z-0"></div>
             </div>
-            <div className="w-5/12">
+            <div className="w-full sm:w-5/12">
               <h3 className="font-bold uppercase mb-8">Etui z powerbankiem</h3>
               <p className="text-justify">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa
@@ -243,8 +371,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex gap-[30px] mx-auto min-h-[400px]">
-            <div className="w-5/12">
+          <div className="flex gap-[15px] sm:gap-[30px] mx-auto min-h-[400px] flex-wrap-reverse sm:flex-nowrap mb-10 sm:mb-0">
+            <div className="w-full sm:w-5/12">
               <Image
                 src="/images/set-cable.png"
                 alt=""
@@ -253,7 +381,7 @@ export default function Home() {
                 className="block mx-auto object-contain"
               />
             </div>
-            <div className="w-2/12 relative">
+            <div className="w-2/12 relative hidden sm:block">
               <Image
                 src="/images/point.svg"
                 alt=""
@@ -263,7 +391,7 @@ export default function Home() {
               />
               <div className="w-[6px] h-full bg-[#700B97] absolute top-[25px] left-[50%] translate-x-[-50%] z-0"></div>
             </div>
-            <div className="w-5/12">
+            <div className="w-full sm:w-5/12">
               <h3 className="font-bold uppercase mb-8">
                 Kabel USB do ładowania
               </h3>
@@ -275,8 +403,8 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex gap-[30px] mx-auto min-h-[400px]">
-            <div className="w-5/12">
+          <div className="flex gap-[15px] sm:gap-[30px] mx-auto min-h-[400px] flex-wrap-reverse sm:flex-nowrap mb-10 sm:mb-0">
+            <div className="w-full sm:w-5/12">
               <Image
                 src="/images/set-erasers.png"
                 alt=""
@@ -285,7 +413,7 @@ export default function Home() {
                 className="block mx-auto object-contain"
               />
             </div>
-            <div className="w-2/12">
+            <div className="w-2/12 hidden sm:block">
               <Image
                 src="/images/point.svg"
                 alt=""
@@ -294,7 +422,7 @@ export default function Home() {
                 className="block mx-auto object-contain relative z-10"
               />
             </div>
-            <div className="w-5/12">
+            <div className="w-full sm:w-5/12">
               <h3 className="font-bold uppercase mb-8">
                 Zestaw gumek o różnych wielkościach
               </h3>
@@ -309,17 +437,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-section-pattern bg-no-repeat bg-center bg-contain">
-        <section className="px-[15] mt-24">
+      <section className="bg-section-pattern bg-no-repeat bg-center">
+        <section ref={ref} className="px-[15px] md:mt-24">
           <div className="container">
-            <div className="w-6/12 mx-auto text-center">
-              <h2 className="font-bold uppercase mb-10">KOMPATYBILNOŚĆ</h2>
+            <div className="w-full md:w-8/12 lg:w-6/12 mx-auto text-center">
+              <h2 className="font-bold uppercase mb-8">KOMPATYBILNOŚĆ</h2>
               <p>
                 Słuchawki prezentowanej w tej ofercie świetnie współpracują z
                 każdym urządzeniem które posiada opcję Bluetooth.
               </p>
             </div>
-            <div className="flex justify-between gap-[30px] mt-16">
+            <div className="flex flex-wrap lg:flex-nowrap sm:justify-center lg:justify-between gap-[30px] mt-16">
               <Compatibility icon="icon_phone" title="Telefon" />
               <Compatibility icon="icon_laptop" title="Laptop" />
               <Compatibility icon="icon_tablet" title="Teblet" />
@@ -335,13 +463,20 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-[15] mt-24">
+        <section ref={ref} className="px-[15px] mt-20 md:mt-40">
           <div className="container">
             <div className="flex items-center gap-[30px] mx-auto">
-              <div className="w-8/12">
-                <h2 className="font-bold uppercase mb-10">
+              <div className="full md:w-8/12">
+                <h2 className="font-bold uppercase mb-8">
                   SZYBKA i darmowa WYSYŁKA
                 </h2>
+                <Image
+                  src="/images/shipment-car.svg"
+                  alt=""
+                  width={400}
+                  height={400}
+                  className="block mx-auto object-contain w-[180px] md:hidden mb-8"
+                />
                 <p className="text-justify">
                   Szybka dostawa to nasza specjalność! Realizujemy wysyłki w
                   ciągu zaledwie jednego dnia roboczego, bez żadnych dodatkowych
@@ -351,7 +486,7 @@ export default function Home() {
                   bezpłatną dostawą Twoich zakupów.
                 </p>
               </div>
-              <div className="w-4/12">
+              <div className="w-4/12 hidden md:block">
                 <Image
                   src="/images/shipment-car.svg"
                   alt=""
@@ -364,21 +499,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="px-[15] mt-24">
+        <section ref={ref} className="px-[15px] mt-20 md:mt-24">
           <div className="container">
-            <div className="flex items-center gap-[30px] mx-auto">
-              <div className="w-6/12">
+            <div className="flex items-center gap-[30px] mx-auto flex-wrap md:flex-nowrap">
+              <div className="w-6/12 hidden md:block">
                 <Image
                   src="/images/bottom-product.png"
                   alt=""
                   width={600}
                   height={600}
-                  className="block mx-auto object-contain"
+                  className="block mx-auto object-contain w-[70%] md:w-[100%]"
                 />
               </div>
-              <div className="w-6/12">
-                <h2 className="font-bold uppercase mb-10">DANE TECHNICZNE</h2>
-                <ul className="mb-10 ml-[17px] list-disc">
+              <div className="w-full md:w-6/12">
+                <h2 className="font-bold uppercase mb-8">DANE TECHNICZNE</h2>
+                <ul className="mb-0 md:mb-12 ml-[17px] list-disc">
                   <li>Wersja Bluetooth: 5.1</li>
                   <li>Kolor dominujący: czarny</li>
                   <li>Zasięg Bluetooth: 20 m</li>
@@ -388,7 +523,16 @@ export default function Home() {
                   <li>Certyfikat wodoodporności: IPX4</li>
                   <li>20-20000 Hz: TAK</li>
                 </ul>
-                <Button>Zamawiam</Button>
+                <Image
+                  src="/images/bottom-product.png"
+                  alt=""
+                  width={600}
+                  height={600}
+                  className="block mx-auto object-contain w-[70%] md:hidden my-4"
+                />
+                <div className="text-center md:text-left">
+                  <Button>Zamawiam</Button>
+                </div>
               </div>
             </div>
           </div>

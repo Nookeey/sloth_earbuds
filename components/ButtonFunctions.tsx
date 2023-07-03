@@ -12,8 +12,8 @@ const ButtonFunctions = ({
   description,
 }: ButtonFunctionsProps) => {
   return (
-    <div className="text-center w-1/4">
-      <div className="flex items-center justify-center w-[150px] h-[150px] mx-auto rounded-full border-solid border-4 border-[#5E097E] mb-6">
+    <div className="text-center w-full">
+      <div className="flex items-center justify-center aspect-square w-[140px] mx-auto rounded-full border-solid border-4 border-[#5E097E] mb-6">
         <Image src={`/images/${icon}.svg`} alt="" width={96} height={96} />
       </div>
       <p className="font-semibold uppercase">{title}</p>

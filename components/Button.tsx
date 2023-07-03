@@ -8,7 +8,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         type={type}
-        className="min-w-[380px] text-center text-2xl border-solid border-4 border-[#8E05C2] py-4 rounded-full 
+        className="w-full max-w-[290px] md:min-w-[380px] text-center text-2xl border-solid border-4 border-[#8E05C2] py-4 rounded-full 
         hover:bg-[#8E05C2] hover:text-white transition
         "
         ref={ref}

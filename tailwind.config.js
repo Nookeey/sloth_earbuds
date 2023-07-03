@@ -11,6 +11,7 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "section-top": "url('/images/header-bg.png')",
         "section-pattern": "url('/images/bg-purple.svg')",
       },
     },
