@@ -69,7 +69,7 @@ export default function Home() {
   return (
     <motion.main className="overflow-hidden" initial="hidden" animate="visible">
       <motion.section
-        className="header px-[15px] min-h-screen flex items-center section-top bg-no-repeat bg-center"
+        className="header py-6 md:py-0 mb-10 md:mb-0 px-[15px] md:min-h-screen flex items-center section-top bg-no-repeat bg-center"
         variants={staggerVariants}
       >
         <div className="container">
@@ -120,7 +120,7 @@ export default function Home() {
         </div>
       </motion.section>
 
-      <section className="bg-section-pattern bg-no-repeat bg-center bg-contain md:bg-auto mt-12 md:mt-0">
+      <section className="bg-section-pattern bg-no-repeat bg-center md:bg-auto">
         <section className="px-[15px]">
           <div className="container">
             <div className="flex items-center gap-[30px] mx-auto flex-wrap-reverse md:flex-nowrap">
@@ -331,7 +331,7 @@ export default function Home() {
                   alt=""
                   width={244}
                   height={229}
-                  className="block mx-auto mt-4 mb-8 sm:my-0"
+                  className="block mx-auto mt-4 mb-8 sm:my-0 max-w-[60%] sm:max-w-[100%]"
                 />
               </AnimateWhenVisible>
             </div>
@@ -368,7 +368,7 @@ export default function Home() {
                   alt=""
                   width={300}
                   height={287}
-                  className="block mx-auto mt-4 mb-8 sm:my-0"
+                  className="block mx-auto mt-4 mb-8 sm:my-0 max-w-[60%] sm:max-w-[100%]"
                 />
               </AnimateWhenVisible>
             </div>
@@ -406,7 +406,7 @@ export default function Home() {
                   alt=""
                   width={300}
                   height={221}
-                  className="block mx-auto mt-4 mb-8 sm:my-0"
+                  className="block mx-auto mt-4 mb-8 sm:my-0 max-w-[60%] sm:max-w-[100%]"
                 />
               </AnimateWhenVisible>
             </div>
@@ -443,7 +443,7 @@ export default function Home() {
                   alt=""
                   width={287}
                   height={213}
-                  className="block mx-auto mt-4 mb-8 sm:my-0"
+                  className="block mx-auto mt-4 mb-8 sm:my-0 max-w-[60%] sm:max-w-[100%]"
                 />
               </AnimateWhenVisible>
             </div>
@@ -476,7 +476,7 @@ export default function Home() {
       </section>
 
       <section className="bg-section-pattern bg-no-repeat bg-center">
-        <section className="px-[15px] md:mt-24">
+        <section className="px-[15px]">
           <div className="container">
             <div className="w-full md:w-8/12 lg:w-6/12 mx-auto text-center">
               <AnimateWhenVisible variants={slideUpVariants}>
