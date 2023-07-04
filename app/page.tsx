@@ -137,7 +137,7 @@ export default function Home() {
               </div>
               <div className="w-full md:w-6/12">
                 <AnimateWhenVisible variants={slideRightVariants}>
-                  <h2 className="font-bold uppercase mb-8">
+                  <h2 className="font-bold uppercase mb-4 md:mb-8">
                     Słuchawki bezprzewodowe z powerbankiem - najnowszy model
                   </h2>
                   <p className="text-justify">
@@ -164,7 +164,7 @@ export default function Home() {
                 variants={staggerVariants}
               >
                 <AnimateWhenVisible variants={slideLeftVariants}>
-                  <h2 className="font-bold uppercase mb-8">
+                  <h2 className="font-bold uppercase mb-4 md:mb-8">
                     Nieustająca muzyka na wyciągnięcie ręki!
                   </h2>
                   <p className="text-justify mb-12">
@@ -216,7 +216,7 @@ export default function Home() {
               </div>
               <div className="w-full md:w-8/12">
                 <AnimateWhenVisible variants={slideRightVariants}>
-                  <h2 className="font-bold uppercase mb-8">
+                  <h2 className="font-bold uppercase mb-4 md:mb-8">
                     Wygodny przycisk wielofunkcyjny
                   </h2>
                   <p className="text-justify">
@@ -270,7 +270,7 @@ export default function Home() {
           <div className="flex items-center gap-[30px] mx-auto flex-wrap md:flex-nowrap">
             <motion.div className="w-full md:w-6/12" variants={staggerVariants}>
               <AnimateWhenVisible variants={slideLeftVariants}>
-                <h2 className="font-bold uppercase mb-8">
+                <h2 className="font-bold uppercase mb-4 md:mb-8">
                   Niezawodna ochrona przed wodą
                 </h2>
                 <p className="text-justify mb-10 md:mb-12">
@@ -349,7 +349,7 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-5/12 sm:min-h-[300px]">
               <AnimateWhenVisible variants={slideRightVariants}>
-                <h3 className="font-bold uppercase mb-8">Słuchawki</h3>
+                <h3 className="font-bold uppercase mb-4 md:mb-8">Słuchawki</h3>
                 <p className="text-justify">
                   Słuchawki są kompatybilne z dowolnym urządzeniem wyposażonym w
                   Bluetooth, niezależnie od systemu operacyjnego i typu
@@ -386,7 +386,7 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-5/12 sm:min-h-[300px]">
               <AnimateWhenVisible variants={slideRightVariants}>
-                <h3 className="font-bold uppercase mb-8">
+                <h3 className="font-bold uppercase mb-4 md:mb-8">
                   Etui z powerbankiem
                 </h3>
                 <p className="text-justify">
@@ -424,7 +424,7 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-5/12 sm:min-h-[300px]">
               <AnimateWhenVisible variants={slideRightVariants}>
-                <h3 className="font-bold uppercase mb-8">
+                <h3 className="font-bold uppercase mb-4 md:mb-8">
                   Kabel USB do ładowania
                 </h3>
                 <p className="text-justify">
@@ -460,7 +460,7 @@ export default function Home() {
             </div>
             <div className="w-full sm:w-5/12 sm:min-h-[300px]">
               <AnimateWhenVisible variants={slideRightVariants}>
-                <h3 className="font-bold uppercase mb-8">
+                <h3 className="font-bold uppercase mb-4 md:mb-8">
                   Zestaw gumek o różnych wielkościach
                 </h3>
                 <p className="text-justify">
@@ -480,7 +480,9 @@ export default function Home() {
           <div className="container">
             <div className="w-full md:w-8/12 lg:w-6/12 mx-auto text-center">
               <AnimateWhenVisible variants={slideUpVariants}>
-                <h2 className="font-bold uppercase mb-8">KOMPATYBILNOŚĆ</h2>
+                <h2 className="font-bold uppercase mb-4 md:mb-8">
+                  KOMPATYBILNOŚĆ
+                </h2>
                 <p>
                   Słuchawki prezentowanej w tej ofercie świetnie współpracują z
                   każdym urządzeniem które posiada opcję Bluetooth.
@@ -537,7 +539,7 @@ export default function Home() {
             <div className="flex items-center gap-[30px] mx-auto">
               <div className="full md:w-8/12">
                 <AnimateWhenVisible variants={slideLeftVariants}>
-                  <h2 className="font-bold uppercase mb-8">
+                  <h2 className="font-bold uppercase mb-4 md:mb-8">
                     SZYBKA i darmowa WYSYŁKA
                   </h2>
                 </AnimateWhenVisible>
@@ -592,7 +594,9 @@ export default function Home() {
               </div>
               <div className="w-full md:w-6/12">
                 <AnimateWhenVisible variants={slideRightVariants}>
-                  <h2 className="font-bold uppercase mb-8">DANE TECHNICZNE</h2>
+                  <h2 className="font-bold uppercase mb-4 md:mb-8">
+                    DANE TECHNICZNE
+                  </h2>
                   <ul className="mb-0 md:mb-12 ml-[17px] list-disc">
                     <li>Wersja Bluetooth: 5.1</li>
                     <li>Kolor dominujący: czarny</li>
