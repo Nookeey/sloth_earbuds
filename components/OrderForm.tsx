@@ -13,6 +13,9 @@ import { BiPackage } from "react-icons/bi";
 
 import { StepType } from "@/app/types";
 
+import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+
 interface Props {
   children?: React.ReactNode;
 }
@@ -48,9 +51,9 @@ const steps: StepType[] = [
 ];
 
 const OrderForm = ({ children }: Props) => {
-  const currentStep = useSelector((state: any) => state.steps.currentStep);
-
-  const dispatch = useDispatch<AppDispatch>();
+  const router = useRouter();
+  const pathname = usePathname();
+  const currentStep = pathname.match(/[^/]+$/)?.[0];
 
   return (
     <div>
@@ -59,7 +62,7 @@ const OrderForm = ({ children }: Props) => {
           {steps.map((item) => (
             <li
               key={item.value}
-              onClick={() => dispatch(setCurrentStep(item.value))}
+              onClick={() => router.push(`/order/${item.value}`)}
               className={`mr-2 inline-flex items-center justify-center p-4 border-b-2 rounded-t-lg 
               ${
                 currentStep === item.value

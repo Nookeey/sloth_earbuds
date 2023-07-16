@@ -15,28 +15,11 @@ const Adress = () => {
 
   const { adress } = useSelector((state: any) => state.order.order);
 
-  const { register, handleSubmit, formState } = useForm<AdressType>({
-    defaultValues: {
-      invoice: adress.invoice,
-      email: adress.email,
-      firstName: adress.firstName,
-      lastName: adress.lastName,
-      phone: adress.phone,
-      city: adress.city,
-      street: adress.street,
-      postCode: adress.postCode,
-      companyName: adress.companyName,
-      companyNip: adress.companyNip,
-      companyStreet: adress.companyStreet,
-      companyCity: adress.companyCity,
-      companyPostCode: adress.companyPostCode,
-    },
-  });
+  const { register, handleSubmit, formState } = useForm<AdressType>();
 
   const { errors } = formState;
 
   const onSubmit = (data: AdressType) => {
-    dispatch(setAdress({ adress: data }));
     router.push("/order/payment");
   };
 
@@ -51,10 +34,9 @@ const Adress = () => {
               type="checkbox"
               className="w-4 h-4 mr-2 text-primary-500 border border-neutral-300 rounded cursor-pointer focus:ring-primary-500"
               checked={adress.invoice}
+              value={adress.invoice}
               {...register("invoice")}
-              onChange={() =>
-                dispatch(setInvoice({ invoice: !adress.invoice }))
-              }
+              onChange={() => dispatch(setAdress({ invoice: !adress.invoice }))}
             />
             <label
               htmlFor="invoice"
@@ -75,7 +57,7 @@ const Adress = () => {
                   id="email"
                   type="email"
                   placeholder="np. test@test.pl"
-                  defaultValue={adress.email}
+                  value={adress.email}
                   {...register("email", {
                     required: "Email jest wymagany",
                     pattern: {
@@ -83,6 +65,9 @@ const Adress = () => {
                       message: "Niepoprawny adres email",
                     },
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ email: e.target.value }))
+                  }
                 />
                 {errors.email && (
                   <span className="text-sm font-medium text-red-500">
@@ -101,9 +86,13 @@ const Adress = () => {
                   id="firstName"
                   type="text"
                   placeholder="np. Jan"
+                  value={adress.firstName}
                   {...register("firstName", {
                     required: "Imię jest wymagane",
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ firstName: e.target.value }))
+                  }
                 />
                 {errors.firstName && (
                   <span className="text-sm font-medium text-red-500">
@@ -122,9 +111,13 @@ const Adress = () => {
                   id="lastName"
                   type="text"
                   placeholder="np. Kowalski"
+                  value={adress.lastName}
                   {...register("lastName", {
                     required: "Nazwisko jest wymagane",
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ lastName: e.target.value }))
+                  }
                 />
                 {errors.lastName && (
                   <span className="text-sm font-medium text-red-500">
@@ -144,6 +137,7 @@ const Adress = () => {
                   id="phone"
                   type="text"
                   placeholder="np. 123456789"
+                  value={adress.phone}
                   {...register("phone", {
                     required: "Telefon jest wymagany",
                     pattern: {
@@ -151,6 +145,9 @@ const Adress = () => {
                       message: "Niepoprawny numer telefonu",
                     },
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ phone: e.target.value }))
+                  }
                 />
                 {errors.phone && (
                   <span className="text-sm font-medium text-red-500">
@@ -169,9 +166,13 @@ const Adress = () => {
                   id="street"
                   type="text"
                   placeholder="np. ul. Przykładowa 1"
+                  value={adress.street}
                   {...register("street", {
                     required: "Ulica i numer jest wymagane",
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ street: e.target.value }))
+                  }
                 />
                 {errors.street && (
                   <span className="text-sm font-medium text-red-500">
@@ -191,6 +192,7 @@ const Adress = () => {
                   id="postCode"
                   type="text"
                   placeholder="np. 00-000"
+                  value={adress.postCode}
                   {...register("postCode", {
                     required: "Kod pocztowy jest wymagany",
                     pattern: {
@@ -198,6 +200,9 @@ const Adress = () => {
                       message: "Niepoprawny kod pocztowy",
                     },
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ postCode: e.target.value }))
+                  }
                 />
                 {errors.postCode && (
                   <span className="text-sm font-medium text-red-500">
@@ -216,9 +221,13 @@ const Adress = () => {
                   id="city"
                   type="text"
                   placeholder="np. Warszawa"
+                  value={adress.city}
                   {...register("city", {
                     required: "Miasto jest wymagane",
                   })}
+                  onChange={(e) =>
+                    dispatch(setAdress({ city: e.target.value }))
+                  }
                 />
                 {errors.city && (
                   <span className="text-sm font-medium text-red-500">
@@ -229,7 +238,7 @@ const Adress = () => {
             </div>
           </div>
           {adress.invoice && (
-            <>
+            <div>
               <OrderTitle title="Wypełnij dane do faktury" className="mt-6" />
               <div className="flex flex-wrap gap-y-4 -mx-2">
                 <div className="w-full px-2">
@@ -242,9 +251,13 @@ const Adress = () => {
                       id="companyName"
                       type="text"
                       placeholder="np. Firma sp. z o.o."
+                      value={adress.companyName}
                       {...register("companyName", {
                         required: "Nazwa firmy jest wymagana",
                       })}
+                      onChange={(e) =>
+                        dispatch(setAdress({ companyName: e.target.value }))
+                      }
                     />
                     {errors.companyName && (
                       <span className="text-sm font-medium text-red-500">
@@ -263,6 +276,7 @@ const Adress = () => {
                       id="companyNip"
                       type="text"
                       placeholder="np. 1234567890"
+                      value={adress.companyNip}
                       {...register("companyNip", {
                         required: "NIP jest wymagany",
                         pattern: {
@@ -270,6 +284,9 @@ const Adress = () => {
                           message: "Niepoprawny NIP",
                         },
                       })}
+                      onChange={(e) =>
+                        dispatch(setAdress({ companyNip: e.target.value }))
+                      }
                     />
                     {errors.companyNip && (
                       <span className="text-sm font-medium text-red-500">
@@ -288,9 +305,13 @@ const Adress = () => {
                       id="companyStreet"
                       type="text"
                       placeholder="np. ul. Przykładowa 1"
+                      value={adress.companyStreet}
                       {...register("companyStreet", {
                         required: "Ulica i numer jest wymagane",
                       })}
+                      onChange={(e) =>
+                        dispatch(setAdress({ companyStreet: e.target.value }))
+                      }
                     />
                     {errors.companyStreet && (
                       <span className="text-sm font-medium text-red-500">
@@ -309,6 +330,7 @@ const Adress = () => {
                       id="companyPostCode"
                       type="text"
                       placeholder="np. 00-000"
+                      value={adress.companyPostCode}
                       {...register("companyPostCode", {
                         required: "Kod pocztowy jest wymagany",
                         pattern: {
@@ -316,6 +338,9 @@ const Adress = () => {
                           message: "Niepoprawny kod pocztowy",
                         },
                       })}
+                      onChange={(e) =>
+                        dispatch(setAdress({ companyPostCode: e.target.value }))
+                      }
                     />
                     {errors.companyPostCode && (
                       <span className="text-sm font-medium text-red-500">
@@ -334,9 +359,13 @@ const Adress = () => {
                       id="companyCity"
                       type="text"
                       placeholder="np. Warszawa"
+                      value={adress.companyCity}
                       {...register("companyCity", {
                         required: "Miasto jest wymagane",
                       })}
+                      onChange={(e) =>
+                        dispatch(setAdress({ companyCity: e.target.value }))
+                      }
                     />
                     {errors.companyCity && (
                       <span className="text-sm font-medium text-red-500">
@@ -346,7 +375,7 @@ const Adress = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </div>
 

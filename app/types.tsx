@@ -4,6 +4,8 @@ export interface ProductType {
   ean: string;
   price: number;
   quantity: number;
+  name: string;
+  image: string;
 }
 
 // address

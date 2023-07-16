@@ -6,7 +6,7 @@ import {
   DeliveryType,
 } from "@/app/types";
 
-interface OrderState {
+export interface OrderState {
   order: {
     product: ProductType;
     adress: AdressType;
@@ -18,13 +18,15 @@ interface OrderState {
 const initialState: OrderState = {
   order: {
     product: {
-      id: "",
-      ean: "",
-      price: 0,
-      quantity: 0,
+      id: "1",
+      ean: "32312412421341",
+      price: 80.0,
+      quantity: 2,
+      name: "Słuchawki bezprzewodowe",
+      image: "/images/header-product.png",
     },
     adress: {
-      invoice: false,
+      invoice: true,
       email: "test@test.pl",
       firstName: "t",
       lastName: "t",
@@ -62,9 +64,10 @@ export const orderSlice = createSlice({
       state.order.adress.invoice = action.payload;
     },
     setAdress: (state, action) => {
-      console.log(action.payload);
-
-      state.order.adress = action.payload;
+      console.log("set adress", action.payload);
+      state.order.adress = { ...state.order.adress, ...action.payload };
+      // state.order.adress = action.payload;
+      console.log("get adress", state.order.adress);
     },
     setPayment: (state, action) => {
       state.order.payment = action.payload;
