@@ -14,7 +14,7 @@ import { BiPackage } from "react-icons/bi";
 import { StepType } from "@/app/types";
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export enum Step {
