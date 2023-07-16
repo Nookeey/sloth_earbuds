@@ -24,7 +24,7 @@ const year = new Date().getFullYear();
 
 const Footer = () => {
   return (
-    <div className="bg-[#5E097E] py-[40px] sm:py-[100px] mt-24">
+    <div className="bg-[#5E097E] text-white py-[40px] sm:py-[30px] mt-24">
       <ul className="flex flex-wrap sm:flex-nowrap justify-center sm:gap-[30px]">
         {footerItems.map((item) => (
           <li

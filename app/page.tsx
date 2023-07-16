@@ -67,7 +67,11 @@ const fadeInVariants = {
 
 export default function Home() {
   return (
-    <motion.main className="overflow-hidden" initial="hidden" animate="visible">
+    <motion.main
+      className="overflow-hidden bg-black text-white"
+      initial="hidden"
+      animate="visible"
+    >
       <motion.section
         className="header py-6 md:py-0 mb-10 md:mb-0 px-[15px] md:min-h-screen flex items-center section-top bg-no-repeat bg-center"
         variants={staggerVariants}
@@ -99,7 +103,7 @@ export default function Home() {
               </motion.div>
               <div className="text-center md:text-left">
                 <motion.div variants={slideLeftVariants}>
-                  <Link href="/order">
+                  <Link href="/order/adress">
                     <Button>Kup teraz</Button>
                   </Link>
                 </motion.div>
@@ -143,7 +147,7 @@ export default function Home() {
                   <p className="text-justify">
                     Odkryj bezprzewodowy dźwięk w najlepszym stylu dzięki naszym
                     najnowszym słuchawkom TWS z ładowalnym etui. Dzięki
-                    technologii Bluetooth 5.1, słuchawki bezprzewodowe łączą się
+                    technologii Bluetooth 5.3, słuchawki bezprzewodowe łączą się
                     z każdym urządzeniem, zapewniając doskonałą jakość dźwięku.
                     Słuchaj muzyki, biegaj, trenuj i ciesz się ulubionymi
                     utworami gdziekolwiek jesteś. Wysokiej jakości magnetyczne
@@ -179,7 +183,7 @@ export default function Home() {
                 </AnimateWhenVisible>
                 <div className="text-center md:text-left">
                   <AnimateWhenVisible variants={slideLeftVariants}>
-                    <Link href="/order">
+                    <Link href="/order/adress">
                       <Button>Zamawiam</Button>
                     </Link>
                   </AnimateWhenVisible>
@@ -293,7 +297,7 @@ export default function Home() {
               </AnimateWhenVisible>
               <div className="text-center md:text-left">
                 <AnimateWhenVisible variants={slideLeftVariants}>
-                  <Link href="/order">
+                  <Link href="/order/adress">
                     <Button>Kup teraz</Button>
                   </Link>
                 </AnimateWhenVisible>
@@ -526,7 +530,7 @@ export default function Home() {
             </div>
             <div className="text-center mt-16">
               <AnimateWhenVisible variants={slideUpVariants}>
-                <Link href="/order">
+                <Link href="/order/adress">
                   <Button>Kup teraz</Button>
                 </Link>
               </AnimateWhenVisible>
@@ -598,7 +602,7 @@ export default function Home() {
                     DANE TECHNICZNE
                   </h2>
                   <ul className="mb-0 md:mb-12 ml-[17px] list-disc">
-                    <li>Wersja Bluetooth: 5.1</li>
+                    <li>Wersja Bluetooth: 5.3</li>
                     <li>Kolor dominujący: czarny</li>
                     <li>Zasięg Bluetooth: 20 m</li>
                     <li>Czas odtwarzania muzyki: 6 godzin</li>
@@ -619,7 +623,7 @@ export default function Home() {
                 </AnimateWhenVisible>
                 <AnimateWhenVisible variants={slideRightVariants}>
                   <div className="text-center md:text-left">
-                    <Link href="/order">
+                    <Link href="/order/adress">
                       <Button>Zamawiam</Button>
                     </Link>
                   </div>
